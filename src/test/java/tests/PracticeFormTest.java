@@ -6,6 +6,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import sharedData.SharedData;
 
 import java.io.File;
 import java.time.Duration;
@@ -13,22 +14,13 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class PracticeFormTest {
-    public WebDriver driver;
+public class PracticeFormTest extends SharedData {
+;
 
     @Test
 
     public void testMethod() {
-        //deschidem o instanta de Chrome
-        driver = new ChromeDriver();
 
-        //accesam o pagina specifica
-        driver.get("https://demoqa.com/automation-practice-form");
-
-        //facem browser-ul in modul maximize
-        driver.manage().window().maximize();
-        //wait implicit
-        //driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
         WebElement firstNameElement = driver.findElement(By.cssSelector("input[placeholder='First Name']"));
         String firstNameValue = "Andreea";
