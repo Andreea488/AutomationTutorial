@@ -1,5 +1,8 @@
 package tests;
 
+import helperMethods.AlertHelper;
+import helperMethods.ElementHelper;
+import helperMethods.PageHelper;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -16,13 +19,20 @@ public class WindowsTest extends SharedData {
     @Test
 
     public void testMethod() {
+        driver.get("https://demoqa.com/");
+
+        ElementHelper elementHelper = new ElementHelper(driver);//creare obiect
+        AlertHelper alertHelper = new AlertHelper(driver);
+        PageHelper pageHelper= new PageHelper(driver);
 
         WebElement alerstWindowsElement=driver.findElement(By.xpath("//h5[text()='Alerts, Frame & Windows']"));
-        JavascriptExecutor executor = (JavascriptExecutor) driver;
-        executor.executeScript("arguments[0].click();", alerstWindowsElement);
+       // JavascriptExecutor executor = (JavascriptExecutor) driver;
+//        executor.executeScript("arguments[0].click();", alerstWindowsElement);
+        elementHelper.clickJSElement(alerstWindowsElement);
 
         WebElement WindowsElement = driver.findElement(By.xpath("//span[text()='Browser Windows']"));
-        executor.executeScript("arguments[0].click();", WindowsElement);
+       // executor.executeScript("arguments[0].click();", WindowsElement);
+        elementHelper.clickJSElement(WindowsElement);
 
         WebElement newtabElement= driver.findElement(By.id("tabButton"));
         //executor.executeScript("arguments[0].click();", newtabElement);
@@ -54,7 +64,7 @@ public class WindowsTest extends SharedData {
         driver.switchTo().window(newWindowList.get(0));
         System.out.println(driver.getCurrentUrl());
 
-        driver.quit();
+        //driver.quit();
 
 
 

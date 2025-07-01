@@ -1,48 +1,55 @@
 package tests;
 
+import helperMethods.AlertHelper;
+import helperMethods.ElementHelper;
+import helperMethods.PageHelper;
 import org.openqa.selenium.*;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import sharedData.SharedData;
 
 import java.io.File;
-import java.time.Duration;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class PracticeFormTest extends SharedData {
-;
 
     @Test
 
     public void testMethod() {
-
+       driver.get("https://demoqa.com/automation-practice-form");
+       ElementHelper elementHelper = new ElementHelper(driver);//creare obiect
+        AlertHelper alertHelper = new AlertHelper(driver);
+        PageHelper pageHelper= new PageHelper(driver);
 
         WebElement firstNameElement = driver.findElement(By.cssSelector("input[placeholder='First Name']"));
         String firstNameValue = "Andreea";
-        firstNameElement.sendKeys(firstNameValue);
+       //firstNameElement.sendKeys(firstNameValue);
+        //elementHelper.pressElement(firstNameElement, Keys.ENTER);
+       elementHelper.fillElement(firstNameElement, firstNameValue);
 
         WebElement lastNameElement = driver.findElement(By.cssSelector("input[placeholder='Last Name']"));
         String lastNameValue = "Iurean";
-        lastNameElement.sendKeys(lastNameValue);
+      // lastNameElement.sendKeys(lastNameValue);
+        elementHelper.fillElement(lastNameElement, lastNameValue);
 
         WebElement emailElement = driver.findElement(By.cssSelector("input[placeholder='name@example.com']"));
         String emailValue = "test@test.com";
-        emailElement.sendKeys(emailValue);
+      //  emailElement.sendKeys(emailValue);
+        elementHelper.fillElement(emailElement, emailValue);
 
         WebElement mobileElement = driver.findElement(By.cssSelector("input[placeholder='Mobile Number']"));
         String mobileValue = "0723456123";
-        mobileElement.sendKeys(mobileValue);
+        //mobileElement.sendKeys(mobileValue);
+        elementHelper.fillElement(mobileElement, mobileValue);
 
         WebElement subjectsElement = driver.findElement(By.id("subjectsInput"));
         List<String> subjectsValue = Arrays.asList("Accounting", "Arts", "Maths");
         for (int index = 0; index < subjectsValue.size(); index++) {
-            subjectsElement.sendKeys(subjectsValue.get(index));
-            subjectsElement.sendKeys(Keys.ENTER);
+            elementHelper.fillElement(subjectsElement, subjectsValue.get(index));
+            elementHelper.pressElement(subjectsElement, Keys.ENTER);
+           // subjectsElement.sendKeys(subjectsValue.get(index));
+           // subjectsElement.sendKeys(Keys.ENTER);
         }
 //        WebElement stateandCityElement = driver.findElement(By.id("react-select-3-input"));
 //        String stateandCityValue = "NCR";
@@ -53,25 +60,30 @@ public class PracticeFormTest extends SharedData {
         List<WebElement> genderElementList = driver.findElements(By.cssSelector("div[id='genterWrapper']>div>div>label[class='custom-control-label']"));
         switch (genderValue) {
             case "Male":
-                genderElementList.get(0).click();
+               // genderElementList.get(0).click();
+                elementHelper.clickJSElement(genderElementList.get(0));
                 break;
             case "Female":
-                genderElementList.get(1).click();
+               // genderElementList.get(1).click();
+                elementHelper.clickJSElement(genderElementList.get(1));
                 break;
             case "Other":
-                genderElementList.get(2).click();
+               // genderElementList.get(2).click();
+                elementHelper.clickJSElement(genderElementList.get(2));
                 break;
         }
         //facem scroll in jos
         //val pozitive merge in jos
-        JavascriptExecutor js = (JavascriptExecutor) driver;
-        js.executeScript("window.scrollBy(0,400)");
+//        JavascriptExecutor js = (JavascriptExecutor) driver;
+//        js.executeScript("window.scrollBy(0,400)");
+        pageHelper.scrollPage(0,400);
 
         List<WebElement> hobbiesElementList = driver.findElements(By.cssSelector("div[id='hobbiesWrapper']>div>div>label[class='custom-control-label']"));
         List<String> hobbiesValue = Arrays.asList("Reading", "Music");
         for (int index = 0; index < hobbiesElementList.size(); index++) {
             if (hobbiesValue.contains(hobbiesElementList.get(index).getText())) {
-                hobbiesElementList.get(index).click();
+                elementHelper.clickElement(hobbiesElementList.get (index));
+               // hobbiesElementList.get(index).click();
             }
 
         }
@@ -79,34 +91,42 @@ public class PracticeFormTest extends SharedData {
         String path = "src/test/resources";
         String uploadValue = "poza1.jpg";
         File file = new File(path + "/" +uploadValue);
-        uplodElement.sendKeys(file.getAbsolutePath());
+        elementHelper.fillElement(uplodElement, file.getAbsolutePath());
+        //uplodElement.sendKeys(file.getAbsolutePath());
 
         WebElement currentAdressElement = driver.findElement(By.id("currentAddress"));
         String currentAddressValue = "Str. Campului nr 20 et 5";
-        currentAdressElement.sendKeys(currentAddressValue);
+        elementHelper.fillElement(currentAdressElement, currentAddressValue);
+       // currentAdressElement.sendKeys(currentAddressValue);
 
-        JavascriptExecutor executor = (JavascriptExecutor) driver;
+       //JavascriptExecutor executor = (JavascriptExecutor) driver;
 
         WebElement stateElement = driver.findElement(By.id("state"));
-        executor.executeScript("arguments[0].click();", stateElement);
-        stateElement.click();
-
+//        executor.executeScript("arguments[0].click();", stateElement);
+//        stateElement.click();
+        elementHelper.clickJSElement(stateElement);
 
         WebElement stateInputElement = driver.findElement(By.id("react-select-3-input"));
         String stateValue = "Uttar Pradesh";
-        stateInputElement.sendKeys(stateValue);
-        stateInputElement.sendKeys(Keys.ENTER);
+        elementHelper.fillElement(stateInputElement, stateValue);
+        elementHelper.pressElement(stateInputElement, Keys.ENTER);
+//        stateInputElement.sendKeys(stateValue);
+//        stateInputElement.sendKeys(Keys.ENTER);
 
         WebElement cityElement = driver.findElement(By.id("react-select-4-input"));
-        executor.executeScript("arguments[0].click();", cityElement);
+        //executor.executeScript("arguments[0].click();", cityElement);
+        elementHelper.clickJSElement(cityElement);
 
         WebElement cityInputElement = driver.findElement(By.id("react-select-4-input"));
         String cityValue = "Lucknow";
-        cityInputElement.sendKeys(cityValue);
-        cityInputElement.sendKeys(Keys.ENTER);
+        elementHelper.fillElement(cityInputElement, cityValue);
+        elementHelper.fillElement(cityInputElement, Keys.ENTER);
+//        cityInputElement.sendKeys(cityValue);
+//        cityInputElement.sendKeys(Keys.ENTER);
 
         WebElement submitElement = driver.findElement(By.id("submit"));
-        executor.executeScript("arguments[0].click();", submitElement);
+        //executor.executeScript("arguments[0].click();", submitElement);
+        elementHelper.clickJSElement(submitElement);
 
         //wait explicit
 //        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
@@ -147,9 +167,7 @@ public class PracticeFormTest extends SharedData {
         Assert.assertEquals(tableDescriptionList.get(9).getText(),"State and City", "State and city text is not displayed right in the table");
         Assert.assertEquals(tableValueList.get(9).getText(), stateValue + " " + cityValue, "State and city text is not displayed right in the table");
 
-        driver.quit();
-
-
+       // driver.quit();
 
     }
 

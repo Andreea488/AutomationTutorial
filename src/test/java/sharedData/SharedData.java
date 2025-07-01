@@ -17,7 +17,7 @@ public class SharedData {
             driver = new ChromeDriver();
 
             //accesam o pagina specifica
-            driver.get("https://demoqa.com/");
+           driver.get("https://demoqa.com/");
 
             //facem browser-ul in modul maximize
             driver.manage().window().maximize();

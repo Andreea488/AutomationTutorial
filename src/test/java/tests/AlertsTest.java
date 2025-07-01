@@ -12,6 +12,8 @@ public class AlertsTest extends SharedData {
     @Test
     public void testMethod() {
 
+        driver.get("https://demoqa.com/");
+
         ElementHelper elementHelper = new ElementHelper(driver);//creare obiect
         AlertHelper alertHelper = new AlertHelper(driver);
         PageHelper pageHelper= new PageHelper(driver);
@@ -21,9 +23,11 @@ public class AlertsTest extends SharedData {
 
         WebElement alertsElement = driver.findElement(By.xpath("//span[text()='Alerts']"));
         elementHelper.clickJSElement(alertsElement);
+       // elementHelper.clickJSElementByXpath("//span[text()='Alerts']");
+
 
         WebElement alertOkButtonElement = driver.findElement(By.id("alertButton"));
-        elementHelper.clickELement(alertOkButtonElement);
+        elementHelper.clickElement(alertOkButtonElement);
 
 //        Alert alertOk = driver.switchTo().alert();
 //        alertOk.accept();
@@ -31,7 +35,7 @@ public class AlertsTest extends SharedData {
        // pageHelper.scrollPage(0,400);
 
         WebElement alertWaitButtonElement= driver.findElement(By.id("timerAlertButton"));
-        elementHelper.clickELement(alertWaitButtonElement);
+        elementHelper.clickElement(alertWaitButtonElement);
 
         alertHelper.acceptAlert();
 
@@ -45,7 +49,7 @@ public class AlertsTest extends SharedData {
         pageHelper.scrollPage(0,400);
 
         WebElement alertOkCancelElement= driver.findElement(By.id("confirmButton"));
-        elementHelper.clickELement(alertOkCancelElement);
+        elementHelper.clickElement(alertOkCancelElement);
 
         alertHelper.dismissAlert();
 
@@ -53,7 +57,7 @@ public class AlertsTest extends SharedData {
       //  alertOkCancel.dismiss();
 
         WebElement alertPromptElement= driver.findElement(By.id("promtButton"));
-        elementHelper.clickELement(alertPromptElement);
+        elementHelper.clickElement(alertPromptElement);
 
 //        Alert alertPrompt= driver.switchTo().alert();  //ce am avut inainte
 //        alertPrompt.sendKeys("Formula1");
