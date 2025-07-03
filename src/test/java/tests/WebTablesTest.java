@@ -176,12 +176,10 @@ public class WebTablesTest extends SharedData {
                 elementHelper.validateElementContainsText(tableList.get(tableSize), editsalarylValue);
                 elementHelper.validateElementContainsText(tableList.get(tableSize), editdepartmentValue);
 
-
         //delete element
         WebElement deleteElement = driver.findElement(By.id("delete-record-4"));
         //deleteElement.click();
                 elementHelper.clickJSElement(deleteElement);
-
 
         tableList = driver.findElements(By.xpath("//div[@class='rt-tr -even'or @class='rt-tr -odd']"));
         //Assert.assertEquals(tableList.size(), tableSize);
