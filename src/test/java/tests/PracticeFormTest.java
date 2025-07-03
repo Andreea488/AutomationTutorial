@@ -46,10 +46,11 @@ public class PracticeFormTest extends SharedData {
         WebElement subjectsElement = driver.findElement(By.id("subjectsInput"));
         List<String> subjectsValue = Arrays.asList("Accounting", "Arts", "Maths");
         for (int index = 0; index < subjectsValue.size(); index++) {
-            elementHelper.fillElement(subjectsElement, subjectsValue.get(index));
-            elementHelper.pressElement(subjectsElement, Keys.ENTER);
+//            elementHelper.fillElement(subjectsElement, subjectsValue.get(index));
+//            elementHelper.pressElement(subjectsElement, Keys.ENTER);
            // subjectsElement.sendKeys(subjectsValue.get(index));
            // subjectsElement.sendKeys(Keys.ENTER);
+            elementHelper.fillPressElement(subjectsElement,subjectsValue.get(index), Keys.ENTER);
         }
 //        WebElement stateandCityElement = driver.findElement(By.id("react-select-3-input"));
 //        String stateandCityValue = "NCR";
@@ -85,7 +86,6 @@ public class PracticeFormTest extends SharedData {
                 elementHelper.clickElement(hobbiesElementList.get (index));
                // hobbiesElementList.get(index).click();
             }
-
         }
         WebElement uplodElement = driver.findElement(By.id("uploadPicture"));
         String path = "src/test/resources";
@@ -108,8 +108,8 @@ public class PracticeFormTest extends SharedData {
 
         WebElement stateInputElement = driver.findElement(By.id("react-select-3-input"));
         String stateValue = "Uttar Pradesh";
-        elementHelper.fillElement(stateInputElement, stateValue);
-        elementHelper.pressElement(stateInputElement, Keys.ENTER);
+       // elementHelper.fillElement(stateInputElement, stateValue);
+        elementHelper.fillPressElement(stateInputElement, stateValue, Keys.ENTER);
 //        stateInputElement.sendKeys(stateValue);
 //        stateInputElement.sendKeys(Keys.ENTER);
 
@@ -119,8 +119,8 @@ public class PracticeFormTest extends SharedData {
 
         WebElement cityInputElement = driver.findElement(By.id("react-select-4-input"));
         String cityValue = "Lucknow";
-        elementHelper.fillElement(cityInputElement, cityValue);
-        elementHelper.fillElement(cityInputElement, Keys.ENTER);
+        elementHelper.fillPressElement(cityInputElement, cityValue, Keys.ENTER);
+       // elementHelper.fillElement(cityInputElement, Keys.ENTER);
 //        cityInputElement.sendKeys(cityValue);
 //        cityInputElement.sendKeys(Keys.ENTER);
 
@@ -133,44 +133,65 @@ public class PracticeFormTest extends SharedData {
 //        wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//table//td[1]")));
 //        wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//table//td[1]")));
 
-
         List<WebElement> tableDescriptionList= driver.findElements(By.xpath("//table//td[1]"));
         List<WebElement> tableValueList =driver.findElements(By.xpath("//table//td[2]"));
 
-        Assert.assertEquals(tableDescriptionList.get(0).getText(),"Student Name", "Student Name text is not displayed right in the table");
-        Assert.assertTrue(tableValueList.get(0).getText().contains(firstNameValue), "First Name text is not displayed right in the table");
-        Assert.assertTrue(tableValueList.get(0).getText().contains(lastNameValue), "Last Name text is not displayed right in the table");
+//        Assert.assertEquals(tableDescriptionList.get(0).getText(),"Student Name", "Student Name text is not displayed right in the table");
+        elementHelper.validateElementEqualsText(tableDescriptionList.get(0), "Student Name");
+//        Assert.assertTrue(tableValueList.get(0).getText().contains(firstNameValue), "First Name text is not displayed right in the table");
+//        Assert.assertTrue(tableValueList.get(0).getText().contains(lastNameValue), "Last Name text is not displayed right in the table");
+        elementHelper.validateElementContainsText(tableValueList.get(0), firstNameElement.getText());
+        elementHelper.validateElementContainsText(tableValueList.get(0), lastNameElement.getText());
 
-        Assert.assertEquals(tableDescriptionList.get(1).getText(),"Student Email", "Email text is not displayed right in the table");
-        Assert.assertEquals(tableValueList.get(1).getText(), emailValue, "Student Email text is not displayed right in the table");
+        elementHelper.validateElementEqualsText(tableDescriptionList.get(1), "Student Email");
+        elementHelper.validateElementEqualsText(tableValueList.get(1), "test@test.com");
+//        Assert.assertEquals(tableDescriptionList.get(1).getText(),"Student Email", "Email text is not displayed right in the table");
+//        Assert.assertEquals(tableValueList.get(1).getText(), emailValue, "Student Email text is not displayed right in the table");
 
-        Assert.assertEquals(tableDescriptionList.get(2).getText(),"Gender", "Gender text is not displayed right in the table");
-        Assert.assertEquals(tableValueList.get(2).getText(), genderValue, "Gender text is not displayed right in the table");
+//        Assert.assertEquals(tableDescriptionList.get(2).getText(),"Gender", "Gender text is not displayed right in the table");
+//        Assert.assertEquals(tableValueList.get(2).getText(), genderValue, "Gender text is not displayed right in the table");
+        elementHelper.validateElementEqualsText(tableDescriptionList.get(2), "Gender");
+        elementHelper.validateElementEqualsText(tableValueList.get(2), genderValue);
 
-        Assert.assertEquals(tableDescriptionList.get(3).getText(),"Mobile", "Mobile text is not displayed right in the table");
-        Assert.assertEquals(tableValueList.get(3).getText(), mobileValue, "Mobile text is not displayed right in the table");
+//        Assert.assertEquals(tableDescriptionList.get(3).getText(),"Mobile", "Mobile text is not displayed right in the table");
+//        Assert.assertEquals(tableValueList.get(3).getText(), mobileValue, "Mobile text is not displayed right in the table");
+        elementHelper.validateElementEqualsText(tableDescriptionList.get(3),"Mobile");
+        elementHelper.validateElementEqualsText(tableValueList.get(3), "0723456123");
 
-        Assert.assertEquals(tableDescriptionList.get(5).getText(),"Subjects", "Subjects text is not displayed right in the table");
-        String expectedSubjects = String.join(", ", subjectsValue);
-        Assert.assertEquals(tableValueList.get(5).getText(), expectedSubjects, "Subjects text is not displayed right in the table");
+//        Assert.assertEquals(tableDescriptionList.get(5).getText(),"Subjects", "Subjects text is not displayed right in the table");
+//        String expectedSubjects = String.join(", ", subjectsValue);
+//        Assert.assertEquals(tableValueList.get(5).getText(), expectedSubjects, "Subjects text is not displayed right in the table");
+        String allSubjects = String.join(", ",subjectsValue);
+        elementHelper.validateElementEqualsText(tableDescriptionList.get(5),"Subjects");
+        elementHelper.validateElementEqualsText(tableValueList.get(5), allSubjects);
 
-        Assert.assertEquals(tableDescriptionList.get(6).getText(),"Hobbies", "Hobbies text is not displayed right in the table");
-        String expectedHobbies = String.join(", ", hobbiesValue);
-        Assert.assertEquals(tableValueList.get(6).getText(), expectedHobbies, "Hobbies text is not displayed right in the table");
+//        Assert.assertEquals(tableDescriptionList.get(6).getText(),"Hobbies", "Hobbies text is not displayed right in the table");
+//        String expectedHobbies = String.join(", ", hobbiesValue);
+//        Assert.assertEquals(tableValueList.get(6).getText(), expectedHobbies, "Hobbies text is not displayed right in the table");
+        String allHobies = String.join(", ",hobbiesValue);
+        elementHelper.validateElementEqualsText(tableDescriptionList.get(6), "Hobbies");
+        elementHelper.validateElementEqualsText(tableValueList.get(6), allHobies);
 
-        Assert.assertEquals(tableDescriptionList.get(7).getText(),"Picture", "Upload picture text is not displayed right in the table");
-        Assert.assertEquals(tableValueList.get(7).getText(), uploadValue, "Upload picture text is not displayed right in the table");
+//        Assert.assertEquals(tableDescriptionList.get(7).getText(),"Picture", "Upload picture text is not displayed right in the table");
+//        Assert.assertEquals(tableValueList.get(7).getText(), uploadValue, "Upload picture text is not displayed right in the table");
+        String fileName = uploadValue;
+        elementHelper.validateElementEqualsText(tableDescriptionList.get(7), "Picture");
+        elementHelper.validateElementEqualsText(tableValueList.get(7), fileName);
 
-        Assert.assertEquals(tableDescriptionList.get(8).getText(),"Address", "Address text is not displayed right in the table");
-        Assert.assertEquals(tableValueList.get(8).getText(), currentAddressValue, "Address text is not displayed right in the table");
+//        Assert.assertEquals(tableDescriptionList.get(8).getText(),"Address", "Address text is not displayed right in the table");
+//        Assert.assertEquals(tableValueList.get(8).getText(), currentAddressValue, "Address text is not displayed right in the table");
+        elementHelper.validateElementEqualsText(tableDescriptionList.get(8), "Address");
+        elementHelper.validateElementEqualsText(tableValueList.get(8), currentAddressValue);
 
-        Assert.assertEquals(tableDescriptionList.get(9).getText(),"State and City", "State and city text is not displayed right in the table");
-        Assert.assertEquals(tableValueList.get(9).getText(), stateValue + " " + cityValue, "State and city text is not displayed right in the table");
+//        Assert.assertEquals(tableDescriptionList.get(9).getText(),"State and City", "State and city text is not displayed right in the table");
+//        Assert.assertEquals(tableValueList.get(9).getText(), stateValue + " " + cityValue, "State and city text is not displayed right in the table");
+        elementHelper.validateElementEqualsText(tableDescriptionList.get(9), "State and City");
+        elementHelper.validateElementContainsText(tableValueList.get(9), stateValue);
+        elementHelper.validateElementContainsText(tableValueList.get(9), cityValue);
 
        // driver.quit();
-
     }
-
 }
+
 
 
