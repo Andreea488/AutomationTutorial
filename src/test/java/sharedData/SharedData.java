@@ -11,25 +11,26 @@ public class SharedData {
     private WebDriver driver;
 
     @BeforeMethod
-    public void preparedEnvironment(){
+    public void preparedEnvironment() {
 
-            //deschidem o instanta de Chrome
-            driver = new ChromeDriver();
+        //deschidem o instanta de Chrome
+        driver = new ChromeDriver();
 
-            //accesam o pagina specifica
-           driver.get("https://demoqa.com/");
+        //accesam o pagina specifica
+        driver.get("https://demoqa.com/");
 
-            //facem browser-ul in modul maximize
-            driver.manage().window().maximize();
+        //facem browser-ul in modul maximize
+        driver.manage().window().maximize();
 
-            //wait implicit
-            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        }
-        @AfterMethod
-    public void clearEnvironment(){
+        //wait implicit
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+    }
+
+    @AfterMethod
+    public void clearEnvironment() {
         driver.quit();
 
-        }
+    }
 
     public WebDriver getDriver() {
         return driver;

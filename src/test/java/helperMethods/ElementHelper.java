@@ -9,28 +9,15 @@ import java.time.Duration;
 import java.util.List;
 
 public class ElementHelper {
-    public WebDriver driver;
+    private WebDriver driver;
 
     public ElementHelper(WebDriver driver) {
         this.driver = driver;
     }
 
-    //face click pe orice element vrei tu
     public void clickJSElement(WebElement element) {
         waitVisibleElement(element);
         JavascriptExecutor executor = (JavascriptExecutor) driver;
-        executor.executeScript("arguments[0].click();", element);
-    }
-
-    public void clickJSElementByXpath(String path) {
-        JavascriptExecutor executor = (JavascriptExecutor) driver;
-        WebElement element = driver.findElement(By.xpath(path));
-        executor.executeScript("arguments[0].click();", element);
-    }
-
-    public void clickJSElementById(String path) {
-        JavascriptExecutor executor = (JavascriptExecutor) driver;
-        WebElement element = driver.findElement(By.xpath(path));
         executor.executeScript("arguments[0].click();", element);
     }
 
@@ -40,22 +27,15 @@ public class ElementHelper {
     }
 
     public void printTextElement(WebElement element) {
-        //WebElement firstBlockELement= driver.findElement(By.id("sampleHeading"));
-        //  System.out.println(firstBlockELement.getText());
         waitVisibleElement(element);
         System.out.println(element.getText());
     }
 
     public void fillElement(WebElement element, String value) {
-        //firstNameElement.sendKeys(firstNameValue);
-        // waitVisibleElement(element);
         waitVisibleElement(element);
         element.sendKeys(value);
     }
 
-    //    public void fillElement(WebElement element, Keys value) {
-//        element.sendKeys(value);
-//   }
     public void pressElement(WebElement element, Keys value) {
         waitVisibleElement(element);
         element.sendKeys(value);
@@ -76,8 +56,6 @@ public class ElementHelper {
         pressElement(element, keyValue);
     }
 
-    //    List<WebElement> tableList = driver.findElements(By.xpath("//div[@class='rt-tr -even'or @class='rt-tr -odd']"));
-//    int tableSize = 3;
     public void validateListSize(List<WebElement> elementsList, int expectedSize) {
         waitVisibleList(elementsList);
         Assert.assertEquals(elementsList.size(), expectedSize, "Actual elements list size: " + elementsList.size() + " is different than " + expectedSize);
