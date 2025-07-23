@@ -14,6 +14,7 @@ public class AlertsTest extends SharedData {
         IndexPage indexPage = new IndexPage(getDriver());
         indexPage.interactWithAlertSFrameWindowMenu();
 
+
         AlertFrameWindowPage alertFrameWindowPage = new AlertFrameWindowPage(getDriver());
         alertFrameWindowPage.interactWithAlertsSubMenu();
 
