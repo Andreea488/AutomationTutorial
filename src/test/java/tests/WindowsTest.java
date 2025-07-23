@@ -15,13 +15,13 @@ public class WindowsTest extends SharedData {
 //        TabHelper tabHelper= new TabHelper (driver);
         //driver.get("https://demoqa.com/");
 
-        IndexPage indexPage = new IndexPage(driver);
+        IndexPage indexPage = new IndexPage(getDriver());
         indexPage.interactWithAlertSFrameWindowMenu();
 
-        AlertFrameWindowPage alertFrameWindowPage = new AlertFrameWindowPage(driver);
+        AlertFrameWindowPage alertFrameWindowPage = new AlertFrameWindowPage(getDriver());
         alertFrameWindowPage.interactWithWindowsSubMenu();
 
-        WindowsPage windowsPage = new WindowsPage(driver);
+        WindowsPage windowsPage = new WindowsPage(getDriver());
         windowsPage.dealWithNewTab();
         windowsPage.dealWithNewWindow();
 

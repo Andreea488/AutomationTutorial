@@ -8,7 +8,7 @@ import org.testng.annotations.BeforeMethod;
 import java.time.Duration;
 
 public class SharedData {
-    public WebDriver driver;
+    private WebDriver driver;
 
     @BeforeMethod
     public void preparedEnvironment(){
@@ -31,4 +31,7 @@ public class SharedData {
 
         }
 
+    public WebDriver getDriver() {
+        return driver;
+    }
 }

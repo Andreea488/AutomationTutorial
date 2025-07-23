@@ -24,10 +24,11 @@ public class PracticeFormTest extends SharedData {
 //       ElementHelper elementHelper = new ElementHelper(driver);//creare obiect
 //        PageHelper pageHelper= new PageHelper(driver);
 
-        IndexPage indexPage = new IndexPage(driver);
+
+        IndexPage indexPage = new IndexPage(getDriver());
         indexPage.interactWithFormsMenu();
 
-        FormsPage formsPage = new FormsPage(driver);
+        FormsPage formsPage = new FormsPage(getDriver());
         formsPage.interactWithPracticeFormSubMenu();
 
         String firstNameValue = "Andreea";
@@ -44,7 +45,7 @@ public class PracticeFormTest extends SharedData {
         String stateValue = "Uttar Pradesh";
         String cityValue = "Lucknow";
 
-        PracticeFormPage practiceFormPage = new PracticeFormPage(driver);
+        PracticeFormPage practiceFormPage = new PracticeFormPage(getDriver());
         practiceFormPage.fillEntireForm(firstNameValue, lastNameValue, emailValue, mobileValue, subjectsValue, genderValue, hobbiesValue,path,
                 currentAddressValue, stateValue, cityValue);
 

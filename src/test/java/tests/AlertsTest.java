@@ -12,8 +12,10 @@ public class AlertsTest extends SharedData {
     public void testMethod() {
 
 //        driver.get("https://demoqa.com/");
-        IndexPage indexPage = new IndexPage(driver);
+        IndexPage indexPage = new IndexPage(getDriver());
         indexPage.interactWithAlertSFrameWindowMenu();
+
+
 
 //        ElementHelper elementHelper = new ElementHelper(driver);//creare obiect
 //        AlertHelper alertHelper = new AlertHelper(driver);
@@ -22,18 +24,19 @@ public class AlertsTest extends SharedData {
 //        WebElement alertsFrameWindowsElement = driver.findElement(By.xpath("//h5[text()='Alerts, Frame & Windows']"));
 //        elementHelper.clickJSElement(alertsFrameWindowsElement);
 
-        AlertFrameWindowPage alertFrameWindowPage = new AlertFrameWindowPage(driver);
+        AlertFrameWindowPage alertFrameWindowPage = new AlertFrameWindowPage(getDriver());
         alertFrameWindowPage.interactWithAlertsSubMenu();
 
 //        WebElement alertsElement = driver.findElement(By.xpath("//span[text()='Alerts']"));
 //        elementHelper.clickJSElement(alertsElement);
 //       // elementHelper.clickJSElementByXpath("//span[text()='Alerts']");
 
-        AlertPage alertPage = new AlertPage(driver);
+        AlertPage alertPage = new AlertPage(getDriver());
         alertPage.dealAlertOk();
         alertPage.dealAlertTimer();
         alertPage.dealAlertCancel();
         alertPage.dealAlertPrompt("Formula1");
+
 
 //        WebElement alertOkButtonElement = driver.findElement(By.id("alertButton"));
 //        elementHelper.clickElement(alertOkButtonElement);

@@ -18,9 +18,9 @@ public class FramesPage extends BasePage{
 //        PageFactory.initElements(driver, this);
     }
     @FindBy(id = "sampleHeading")
-    public WebElement firstBlockELement;
+    private WebElement firstBlockELement;
     @FindBy(id = "sampleHeading")
-    public WebElement secondFrameElement;
+    private WebElement secondFrameElement;
 
     public void dealWithBigFrame(){
 //       frameHelper.switchFrameByElement(driver.findElement(By.xpath("//iframe[@id='frame1']"))); //se inlocuieste tot cu ce e mai jos

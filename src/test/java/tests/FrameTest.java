@@ -30,7 +30,7 @@ public class FrameTest extends SharedData {
 //        FrameHelper frameHelper = new FrameHelper(driver);
 //        PageHelper pageHelper= new PageHelper(driver);
 
-        IndexPage indexPage = new IndexPage(driver);
+        IndexPage indexPage = new IndexPage(getDriver());
         indexPage.interactWithAlertSFrameWindowMenu();
 
 //        WebElement alerstWindowsElementHelper = driver.findElement(By.xpath("//h5[text()='Alerts, Frame & Windows']"));
@@ -46,7 +46,7 @@ public class FrameTest extends SharedData {
 //        // executor.executeScript("arguments[0].click();", alertsElement);
 //        // frameHelper.clickJSElement(alertsElement);
 //        elementHelper.clickJSElement(alertsElement);
-        AlertFrameWindowPage alertFrameWindowPage = new AlertFrameWindowPage(driver);
+        AlertFrameWindowPage alertFrameWindowPage = new AlertFrameWindowPage(getDriver());
         alertFrameWindowPage.interactWithFramesSubMenu();
 
 //        driver.switchTo().frame("frame1");
@@ -57,7 +57,7 @@ public class FrameTest extends SharedData {
 //       System.out.println(firstBlockELement.getText());
 //       elementHelper.printTextElement(firstBlockELement);
 
-        FramesPage framesPage = new FramesPage(driver);
+        FramesPage framesPage = new FramesPage(getDriver());
         framesPage.dealWithBigFrame();
         framesPage.dealWithLittleFrame();
 //

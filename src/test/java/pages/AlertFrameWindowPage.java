@@ -15,11 +15,11 @@ public class AlertFrameWindowPage extends BasePage {
 //        PageFactory.initElements(driver, this);
     }
     @FindBy(xpath = "//span[text()='Alerts']")
-    public WebElement alertsElements;
+    private WebElement alertsElements;
     @FindBy(xpath = "//span[text()='Frames']")
-    public WebElement framesElements;
+    private WebElement framesElements;
     @FindBy(xpath = "//span[text()='Browser Windows']")
-    public WebElement WindowsElement;
+    private WebElement WindowsElement;
 
     public void interactWithAlertsSubMenu(){
         elementHelper.clickJSElement(alertsElements);

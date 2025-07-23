@@ -6,11 +6,11 @@ import org.openqa.selenium.support.FindBy;
 
 public class ElementsPage extends BasePage{
 
-    public ElementsPage(WebDriver driver){
+     public ElementsPage(WebDriver driver){
         super(driver);
     }
     @FindBy(xpath = "//span[text()='Web Tables']")
-    public WebElement webTablesElement;
+    private WebElement webTablesElement;
 
     public void interactWithWebTablesSubMenu(){
     elementHelper.clickJSElement(webTablesElement);

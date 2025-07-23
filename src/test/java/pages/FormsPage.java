@@ -20,7 +20,7 @@ public class FormsPage {
         }
 
         @FindBy(xpath = "//span[text()='Practice Form']" )
-        public WebElement practiceForm;
+        private WebElement practiceForm;
 
         public void interactWithPracticeFormSubMenu(){
             elementHelper.clickElement(practiceForm);
