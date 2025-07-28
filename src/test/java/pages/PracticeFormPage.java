@@ -3,6 +3,7 @@ package pages;
 import helperMethods.ElementHelper;
 import helperMethods.FrameHelper;
 import helperMethods.PageHelper;
+import loggerUtility.LoggerUtility;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -55,11 +56,16 @@ public class PracticeFormPage extends BasePage {
     public void fillEntireForm(String firstNameValue, String lastNameValue, String emailValue, String mobileValue, List<String> subjectsValue, String genderValue,
                                List<String> hobbiesValue, String uploadValue, String currentAddressValue, String stateValue, String cityValue) {
         elementHelper.fillElement(firstNameElement, firstNameValue);
+        LoggerUtility.infoLog(("The user fills first name field with value " + firstNameValue));
         elementHelper.fillElement(lastNameElement, lastNameValue);
+        LoggerUtility.infoLog(("The user fills first name field with value " + lastNameValue));
         elementHelper.fillElement(emailElement, emailValue);
+        LoggerUtility.infoLog(("The user fills first name field with value " + emailValue));
         elementHelper.fillElement(mobileElement, mobileValue);
+        LoggerUtility.infoLog(("The user fills first name field with value " + mobileValue));
         for (int index = 0; index < subjectsValue.size(); index++) {
             elementHelper.fillPressElement(subjectsElement, subjectsValue.get(index), Keys.ENTER);
+            LoggerUtility.infoLog(("The user fills subjects fields with value " + subjectsValue.get(index)));
         }
         switch (genderValue) {
             case "Male":
@@ -72,56 +78,83 @@ public class PracticeFormPage extends BasePage {
                 elementHelper.clickJSElement(genderElementList.get(2));
                 break;
         }
+        LoggerUtility.infoLog("The user checks from gender field the value "+ genderValue);
         pageHelper.scrollPage(0, 400);
 
         for (int index = 0; index < hobbiesElementList.size(); index++) {
             if (hobbiesValue.contains(hobbiesElementList.get(index).getText())) {
                 elementHelper.clickElement(hobbiesElementList.get(index));
+                LoggerUtility.infoLog("The user fills the hobbies field value "+ hobbiesElementList.get(index).getText());
             }
         }
         File file = new File(uploadValue);
         elementHelper.fillElement(uplodElement, file.getAbsolutePath());
+        LoggerUtility.infoLog("The user uploads the file "+file.getAbsolutePath());
         elementHelper.fillElement(currentAdressElement, currentAddressValue);
+        LoggerUtility.infoLog("The user fills the hobbies field value "+currentAddressValue);
         elementHelper.clickJSElement(stateElement);
         elementHelper.fillPressElement(stateInputElement, stateValue, Keys.ENTER);
+        LoggerUtility.infoLog("The user fills the hobbies field value "+stateValue);
         elementHelper.clickJSElement(cityElement);
         elementHelper.fillPressElement(cityInputElement, cityValue, Keys.ENTER);
+        LoggerUtility.infoLog("The user fills the hobbies field value "+cityValue);
         elementHelper.clickJSElement(submitElement);
+        LoggerUtility.infoLog("The user clicks on submit button");
     }
 
     public void validateFormValues(String firstNameValue, String lastNameValue, String emailValue, String genderValue,
                                    String mobileValue, List<String> subjectsValue, List<String> hobbiesValue, String fileName, String currentAddressValue,
                                    String stateValue, String cityValue) {
         elementHelper.validateElementEqualsText(tableDescriptionList.get(0), "Student Name");
+        LoggerUtility.infoLog("The user validate the presence of value: Student Name");
         elementHelper.validateElementContainsText(tableValueList.get(0), firstNameValue);
+        LoggerUtility.infoLog("The user validate the presence of value: "+ firstNameValue);
         elementHelper.validateElementContainsText(tableValueList.get(0), lastNameValue);
+        LoggerUtility.infoLog("The user validate the presence of value: "+ lastNameValue);
 
         elementHelper.validateElementEqualsText(tableDescriptionList.get(1), "Student Email");
+        LoggerUtility.infoLog("The user validate the presence of value: Student Email");
         elementHelper.validateElementEqualsText(tableValueList.get(1), emailValue);
+        LoggerUtility.infoLog("The user validate the presence of value: "+ emailValue);
 
         elementHelper.validateElementEqualsText(tableDescriptionList.get(2), "Gender");
+        LoggerUtility.infoLog("The user validate the presence of value: Student Name");
         elementHelper.validateElementEqualsText(tableValueList.get(2), genderValue);
+        LoggerUtility.infoLog("The user validate the presence of value: "+ genderValue);
 
         elementHelper.validateElementEqualsText(tableDescriptionList.get(3), "Mobile");
+        LoggerUtility.infoLog("The user validate the presence of value: Mobile");
         elementHelper.validateElementEqualsText(tableValueList.get(3), mobileValue);
+        LoggerUtility.infoLog("The user validate the presence of value: "+ mobileValue);
 
         String allSubjects = String.join(", ", subjectsValue);
         elementHelper.validateElementEqualsText(tableDescriptionList.get(5), "Subjects");
+        LoggerUtility.infoLog("The user validate the presence of value: Subjects");
         elementHelper.validateElementEqualsText(tableValueList.get(5), allSubjects);
+        LoggerUtility.infoLog("The user validate the presence of value: "+ allSubjects);
 
         String allHobies = String.join(", ", hobbiesValue);
         elementHelper.validateElementEqualsText(tableDescriptionList.get(6), "Hobbies");
+        LoggerUtility.infoLog("The user validate the presence of value: Hobbies");
         elementHelper.validateElementEqualsText(tableValueList.get(6), allHobies);
+        LoggerUtility.infoLog("The user validate the presence of value: " +hobbiesValue);
 
         File file = new File(fileName);
         elementHelper.validateElementEqualsText(tableDescriptionList.get(7), "Picture");
+        LoggerUtility.infoLog("The user validate the presence of value: Picture");
         elementHelper.fillElement(uplodElement, file.getAbsolutePath());
+        LoggerUtility.infoLog("The user validate the presence of value: Student Name");
 
         elementHelper.validateElementEqualsText(tableDescriptionList.get(8), "Address");
+        LoggerUtility.infoLog("The user validate the presence of value: Address");
         elementHelper.validateElementEqualsText(tableValueList.get(8), currentAddressValue);
+        LoggerUtility.infoLog("The user validate the presence of value: " +currentAddressValue);
 
         elementHelper.validateElementEqualsText(tableDescriptionList.get(9), "State and City");
+        LoggerUtility.infoLog("The user validate the presence of value: State and City ");
         elementHelper.validateElementContainsText(tableValueList.get(9), stateValue);
+        LoggerUtility.infoLog("The user validate the presence of value: "+ stateValue);
         elementHelper.validateElementContainsText(tableValueList.get(9), cityValue);
+        LoggerUtility.infoLog("The user validate the presence of value: "+ cityValue);
     }
 }

@@ -15,7 +15,11 @@ public class LoggerUtility {
     public static void infoLog(String message){
         logger.info(message);
     }
-    //error step
+    //error
+    public static void errorLog(String message){
+        logger.error(message);
+    }
+
     //finish test
     public static void finishTest(String testName){
         logger.info("===== Execution finished: " + testName + " =====");
