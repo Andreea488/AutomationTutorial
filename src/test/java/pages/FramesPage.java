@@ -21,10 +21,11 @@ public class FramesPage extends BasePage{
         LoggerUtility.infoLog("The user switches to specific frame");
         elementHelper.printTextElement(firstBlockELement);
         frameHelper.switchToParent();
-        LoggerUtility.infoLog("The user to specific parent frame");
+        LoggerUtility.infoLog("The user switched to  parent frame");
     }
     public void dealWithLittleFrame(){
         frameHelper.switchFrameByString("frame2");
+        LoggerUtility.infoLog("The user switches to specific frame");
         elementHelper.printTextElement(secondFrameElement);
     }
 }

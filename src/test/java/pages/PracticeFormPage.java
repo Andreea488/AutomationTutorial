@@ -58,11 +58,11 @@ public class PracticeFormPage extends BasePage {
         elementHelper.fillElement(firstNameElement, firstNameValue);
         LoggerUtility.infoLog(("The user fills first name field with value " + firstNameValue));
         elementHelper.fillElement(lastNameElement, lastNameValue);
-        LoggerUtility.infoLog(("The user fills first name field with value " + lastNameValue));
+        LoggerUtility.infoLog(("The user fills last name field with value " + lastNameValue));
         elementHelper.fillElement(emailElement, emailValue);
-        LoggerUtility.infoLog(("The user fills first name field with value " + emailValue));
+        LoggerUtility.infoLog(("The user fills email field with value " + emailValue));
         elementHelper.fillElement(mobileElement, mobileValue);
-        LoggerUtility.infoLog(("The user fills first name field with value " + mobileValue));
+        LoggerUtility.infoLog(("The user fills mobile field with value " + mobileValue));
         for (int index = 0; index < subjectsValue.size(); index++) {
             elementHelper.fillPressElement(subjectsElement, subjectsValue.get(index), Keys.ENTER);
             LoggerUtility.infoLog(("The user fills subjects fields with value " + subjectsValue.get(index)));
@@ -84,20 +84,20 @@ public class PracticeFormPage extends BasePage {
         for (int index = 0; index < hobbiesElementList.size(); index++) {
             if (hobbiesValue.contains(hobbiesElementList.get(index).getText())) {
                 elementHelper.clickElement(hobbiesElementList.get(index));
-                LoggerUtility.infoLog("The user fills the hobbies field value "+ hobbiesElementList.get(index).getText());
+                LoggerUtility.infoLog("The user fills the hobbies field with value "+ hobbiesElementList.get(index).getText());
             }
         }
         File file = new File(uploadValue);
         elementHelper.fillElement(uplodElement, file.getAbsolutePath());
         LoggerUtility.infoLog("The user uploads the file "+file.getAbsolutePath());
         elementHelper.fillElement(currentAdressElement, currentAddressValue);
-        LoggerUtility.infoLog("The user fills the hobbies field value "+currentAddressValue);
+        LoggerUtility.infoLog("The user fills the current address field value "+currentAddressValue);
         elementHelper.clickJSElement(stateElement);
         elementHelper.fillPressElement(stateInputElement, stateValue, Keys.ENTER);
-        LoggerUtility.infoLog("The user fills the hobbies field value "+stateValue);
+        LoggerUtility.infoLog("The user fills the state field value "+stateValue);
         elementHelper.clickJSElement(cityElement);
         elementHelper.fillPressElement(cityInputElement, cityValue, Keys.ENTER);
-        LoggerUtility.infoLog("The user fills the hobbies field value "+cityValue);
+        LoggerUtility.infoLog("The user fills the city field value "+cityValue);
         elementHelper.clickJSElement(submitElement);
         LoggerUtility.infoLog("The user clicks on submit button");
     }
@@ -118,7 +118,7 @@ public class PracticeFormPage extends BasePage {
         LoggerUtility.infoLog("The user validate the presence of value: "+ emailValue);
 
         elementHelper.validateElementEqualsText(tableDescriptionList.get(2), "Gender");
-        LoggerUtility.infoLog("The user validate the presence of value: Student Name");
+        LoggerUtility.infoLog("The user validate the presence of value: Gender");
         elementHelper.validateElementEqualsText(tableValueList.get(2), genderValue);
         LoggerUtility.infoLog("The user validate the presence of value: "+ genderValue);
 

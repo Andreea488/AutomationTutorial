@@ -19,9 +19,9 @@ public class WindowsPage extends BasePage {
         elementHelper.clickElement(newTabElement);
         LoggerUtility.infoLog(("The user clicks on new tab button"));
         tabHelper.switchToSpecificTab(1);
-        LoggerUtility.infoLog(("The user switches on second tab button"));
+        LoggerUtility.infoLog(("The user switches on second tab open"));
         tabHelper.closeCurrentTab();
-        LoggerUtility.infoLog(("The user close  tab "));
+        LoggerUtility.infoLog(("The user closes  tab "));
         tabHelper.switchToSpecificTab(0);
         LoggerUtility.infoLog(("The user switches to initial tab "));
 
@@ -30,11 +30,11 @@ public class WindowsPage extends BasePage {
         elementHelper.clickElement(newWindowElement);
         LoggerUtility.infoLog(("The user clicks on new window button"));
         tabHelper.switchToSpecificTab(1);
-        LoggerUtility.infoLog(("The user switches on second tab button"));
+        LoggerUtility.infoLog(("The user switches on specific tab"));
         tabHelper.closeCurrentTab();
-        LoggerUtility.infoLog(("The user close  window "));
+        LoggerUtility.infoLog(("The user close the  tab "));
         tabHelper.switchToSpecificTab(0);
-        LoggerUtility.infoLog(("The user switches to initial window "));
+        LoggerUtility.infoLog(("The user switches to specific tab "));
 
     }
 }
