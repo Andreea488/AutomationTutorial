@@ -1,8 +1,5 @@
 package pages;
 
-import helperMethods.ElementHelper;
-import helperMethods.FrameHelper;
-import helperMethods.PageHelper;
 import loggerUtility.LoggerUtility;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
