@@ -1,25 +1,25 @@
 package sharedData;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
 import loggerUtility.LoggerUtility;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.edge.EdgeOptions;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.firefox.FirefoxOptions;
 
 import java.time.Duration;
 
 public class EdgeBrowser implements Browser{
     private WebDriver driver;
 
-    private FirefoxOptions fireFoxOptions;
+    private EdgeOptions edgeOptions;
 
     @Override
     public void openBrowser() {
+
+        //WebDriverManager.edgedriver().setup(); // descarcă automat msedgedriver
+        System.setProperty("webdriver.edge.driver", "C:\\Drivers\\msedgedriver.exe");
         configBrowser();
-        driver = new FirefoxDriver(fireFoxOptions);
+        driver = new EdgeDriver(edgeOptions);
 
         driver.get("https://demoqa.com/");
 
@@ -31,14 +31,16 @@ public class EdgeBrowser implements Browser{
 
     @Override
     public void configBrowser() {
-        fireFoxOptions = new FirefoxOptions();
-        fireFoxOptions.addArguments("window-size=1680,1050");
-        fireFoxOptions.addArguments("--disable-gpu");
-        fireFoxOptions.addArguments("--disable-infobars");
-        fireFoxOptions.addArguments("--disable-extensions");
-     //   edgeOptions.addArguments("--headless=new");
-        fireFoxOptions.addArguments("--incognito");
-
+        boolean cicd = Boolean.parseBoolean(System.getProperty("cicd"));
+        edgeOptions = new EdgeOptions();
+        edgeOptions.addArguments("window-size=1680,1050");
+        edgeOptions.addArguments("--disable-gpu");
+        edgeOptions.addArguments("--disable-infobars");
+        edgeOptions.addArguments("--disable-extensions");
+        if (cicd) {
+            edgeOptions.addArguments("--headless=new");
+        }
+        edgeOptions.addArguments("--incognito");
 
     }
 
