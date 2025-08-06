@@ -5,13 +5,16 @@ import pages.FormsPage;
 import pages.IndexPage;
 import pages.PracticeFormPage;
 import sharedData.SharedData;
+import suite.Suite;
 
 import java.util.Arrays;
 import java.util.List;
 
+import static suite.Suite.REGRESSION_SUITE;
+
 public class PracticeFormTest extends SharedData {
 
-    @Test
+    @Test(groups = {Suite.REGRESSION_SUITE,Suite.SANITY_SUITE, Suite.FORM_SUITE})
 
     public void testMethod() {
 

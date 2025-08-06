@@ -14,14 +14,14 @@ import pages.AlertFrameWindowPage;
 import pages.FramesPage;
 import pages.IndexPage;
 import sharedData.SharedData;
+import suite.Suite;
 
 import java.time.Duration;
 
 public class FrameTest extends SharedData {
 
 
-    @Test
-
+    @Test(groups = {Suite.REGRESSION_SUITE,Suite.SANITY_SUITE, Suite.ALERTWINDOWFRAME_SUITE})
     public void testMethod() {
 
         IndexPage indexPage = new IndexPage(getDriver());
