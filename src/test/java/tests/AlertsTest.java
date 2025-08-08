@@ -9,7 +9,7 @@ import suite.Suite;
 
 public class AlertsTest extends SharedData {
 
-    @Test(groups = {Suite.REGRESSION_SUITE,Suite.SANITY_SUITE, Suite.ALERTWINDOWFRAME_SUITE})
+    @Test(groups = {Suite.REGRESSION_SUITE,Suite.SANITY_SUITE,Suite.ALERTWINDOWFRAME_SUITE})
     public void testMethod() {
 
         IndexPage indexPage = new IndexPage(getDriver());

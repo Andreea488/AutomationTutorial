@@ -14,7 +14,7 @@ import static suite.Suite.REGRESSION_SUITE;
 
 public class PracticeFormTest extends SharedData {
 
-    @Test(groups = {Suite.REGRESSION_SUITE,Suite.SANITY_SUITE, Suite.FORM_SUITE})
+    @Test(groups = {Suite.REGRESSION_SUITE,Suite.FORM_SUITE})
 
     public void testMethod() {
 

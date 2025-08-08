@@ -9,7 +9,7 @@ import suite.Suite;
 
 public class WebTablesTest extends SharedData {
 
-    @Test(groups = {Suite.REGRESSION_SUITE,Suite.SANITY_SUITE, Suite.ELEMENT_SUITE})
+    @Test(groups = {Suite.REGRESSION_SUITE,Suite.ELEMENT_SUITE})
 
     public void testMethod() {
         IndexPage indexPage = new IndexPage(getDriver());
