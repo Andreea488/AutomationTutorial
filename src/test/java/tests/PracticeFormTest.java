@@ -10,7 +10,6 @@ import suite.Suite;
 import java.util.Arrays;
 import java.util.List;
 
-import static suite.Suite.REGRESSION_SUITE;
 
 public class PracticeFormTest extends SharedData {
 
